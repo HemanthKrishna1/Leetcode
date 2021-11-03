@@ -1,0 +1,37 @@
+class Solution {
+    public boolean halvesAreAlike(String s) {
+        String s1 = "";
+        String s2 = "";
+        int count1 = 0;
+        int count2 = 0;
+        int i=0;
+        for(i=0; i<s.length()/2;i++){
+            if(s.charAt(i)>='A' && s.charAt(i)<='Z'){
+                s1 += (char)(s.charAt(i)+'a'-'A');
+            }else {
+                s1 += s.charAt(i);
+            }
+        }
+        for(;i<s.length();i++){
+            if(s.charAt(i)>='A' && s.charAt(i)<='Z'){
+                s2 += (char)(s.charAt(i)+'a'-'A');
+            }else {
+                s2 += s.charAt(i);
+            }
+        }
+        for(int j=0; j<s1.length();j++){
+            if (s1.charAt(j)=='a' || s1.charAt(j)=='e' || s1.charAt(j)=='i' || s1.charAt(j)=='o' || s1.charAt(j)=='u'){
+                count1++;
+            }
+        }
+        for(int j=0; j<s2.length();j++){
+            if (s2.charAt(j)=='a' || s2.charAt(j)=='e' || s2.charAt(j)=='i' || s2.charAt(j)=='o' || s2.charAt(j)=='u'){
+                count2++;
+            }
+        }
+        if (count1==count2){
+            return true;
+        }
+        return false;
+    }
+}
