@@ -1,0 +1,22 @@
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        for(int i=1; i<numbers.length;i++){
+            int a_j = target - numbers[i];
+            int low =0;
+            int high = i-1;
+            int j =-1;
+            while(low <= high){
+                int mid = (low+high)/2;
+                if (numbers[mid] == a_j){
+                    j = mid;
+                    return new int[] {j+1,i+1};
+                }else if (numbers[mid] > a_j) {
+                    high = mid-1;
+                }else {
+                    low = mid+1;
+                }
+            }
+        }
+        return new int[] {-1,-1};
+    }
+}
