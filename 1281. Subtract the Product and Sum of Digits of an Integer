@@ -1,0 +1,32 @@
+class Solution {
+    public int subtractProductAndSum(int n) {
+        int sum_of_digits = sum(n);
+        int product_of_digits = product(n);
+        System.out.println(product_of_digits);
+        System.out.println(sum_of_digits);
+        return (product_of_digits - sum_of_digits);
+    }
+    public int sum(int n){
+        int result = 0;
+        while(n>0){
+            result = result + n%10;
+            n = n/10;
+        }
+        return result;
+    }
+    public int product(int n){
+        if(n==0){
+            return 0;
+        }
+        if(n==1){
+            return 1;
+        }
+        int result = n%10;
+        n = n/10;
+        while (n>0){
+            result = result * (n%10);
+            n = n/10;
+        }
+        return result;
+    }
+}
