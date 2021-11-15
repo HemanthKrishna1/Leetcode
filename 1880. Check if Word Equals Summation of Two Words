@@ -1,0 +1,84 @@
+class Solution {
+    public boolean isSumEqual(String firstWord, String secondWord, String targetWord) {
+        String first ="";
+        String second ="";
+        String target = "";
+        for(int i=0; i<firstWord.length();i++){
+            if(firstWord.charAt(i)=='a'){
+                first+='0';
+            }else if(firstWord.charAt(i)=='b'){
+                first+='1';
+            }else if(firstWord.charAt(i)=='c'){
+                first+='2';
+            }else if(firstWord.charAt(i)=='d'){
+                first+='3';
+            }else if(firstWord.charAt(i)=='e'){
+                first+='4';
+            }else if(firstWord.charAt(i)=='f'){
+                first+='5';
+            }else if(firstWord.charAt(i)=='g'){
+                first+='6';
+            }else if(firstWord.charAt(i)=='h'){
+                first+='7';
+            }else if(firstWord.charAt(i)=='i'){
+                first+='8';
+            } else if(firstWord.charAt(i)=='j'){
+                first+='9';
+            }
+        }
+        for(int i=0; i<secondWord.length();i++){
+            if(secondWord.charAt(i)=='a'){
+                second+='0';
+            }else if(secondWord.charAt(i)=='b'){
+                second+='1';
+            }else if(secondWord.charAt(i)=='c'){
+                second+='2';
+            }else if(secondWord.charAt(i)=='d'){
+                second+='3';
+            }else if(secondWord.charAt(i)=='e'){
+                second+='4';
+            }else if(secondWord.charAt(i)=='f'){
+                second+='5';
+            }else if(secondWord.charAt(i)=='g'){
+                second+='6';
+            }else if(secondWord.charAt(i)=='h'){
+                second+='7';
+            }else if(secondWord.charAt(i)=='i'){
+                second+='8';
+            } else if(secondWord.charAt(i)=='j'){
+                second+='9';
+            }
+        }
+        for(int i=0; i<targetWord.length();i++){
+            if(targetWord.charAt(i)=='a'){
+                target+='0';
+            }else if(targetWord.charAt(i)=='b'){
+                target+='1';
+            }else if(targetWord.charAt(i)=='c'){
+                target+='2';
+            }else if(targetWord.charAt(i)=='d'){
+                target+='3';
+            }else if(targetWord.charAt(i)=='e'){
+                target+='4';
+            }else if(targetWord.charAt(i)=='f'){
+                target+='5';
+            }else if(targetWord.charAt(i)=='g'){
+                target+='6';
+            }else if(targetWord.charAt(i)=='h'){
+                target+='7';
+            }else if(targetWord.charAt(i)=='i'){
+                target+='8';
+            } else if(targetWord.charAt(i)=='j'){
+                target+='9';
+            }
+        }
+        int a = Integer.parseInt(first);
+        int b = Integer.parseInt(second);
+        int c = Integer.parseInt(target);
+        if((a+b) == c){
+            return true;
+        }
+        return false;
+        
+    }
+}
