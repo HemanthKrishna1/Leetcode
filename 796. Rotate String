@@ -1,0 +1,25 @@
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        int i=0;
+        while(i<s.length()){
+            if(rotate(i,s).equals(goal)){
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
+    public String rotate(int i,String s){
+        String ans ="";
+        int k=0;
+        int j=i;
+        for(int m=j; m<s.length();m++){
+            ans+=s.charAt(m);
+        }
+        while(k<i){
+            ans+=s.charAt(k);
+            k++;
+        }
+        return ans;
+    }
+}
