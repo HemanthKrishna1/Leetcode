@@ -1,0 +1,12 @@
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        sum=0
+        for i in range(0,len(num)):
+            sum = sum*10 + num[i]
+        ans = sum+k
+        l= list(str(ans))
+        print(l)
+        ans_list = []
+        for i in range(0,len(l)):
+            ans_list.append(int(l[i]))
+        return ans_list
