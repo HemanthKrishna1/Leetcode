@@ -1,0 +1,32 @@
+class Solution {
+    public boolean isMonotonic(int[] nums) {
+        if(nums.length == 1){
+            return true;
+        }
+        return check_ass(nums) || check_des(nums);
+    }
+    public boolean check_ass(int[] arr){
+        int i = 0;
+        int j = i+1;
+        while(i<arr.length && j<arr.length){
+            if(arr[j] < arr[i]){
+                return false;
+            }
+            i++;
+            j++;
+        }
+        return true;
+    }
+    public boolean check_des(int[] arr){
+        int i=0;
+        int j=i+1;
+        while(i<arr.length && j<arr.length){
+            if(arr[i] < arr[j]){
+                return false;
+            }
+            i++;
+            j++;
+        }
+        return true;
+    }
+}
