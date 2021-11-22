@@ -1,0 +1,40 @@
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        string ans ;
+        int i=a.size()-1;
+        int j=b.size()-1;
+        int carry =0;
+        // set initailly carry to zero
+        while(i>=0 && j>=0){
+            // calculate sum for every ith and jth coloumn
+            int sum = carry + a[i]-'0' + b[j]-'0';
+            // calculate carry now if sum is 0+1 carry will be 0. if sum is 1+1 or 1+1+1 then carry will be 1 which is done using sum/2
+            carry = sum/2;
+            // append the result leaving carry for later by (sum%2) 
+            ans += to_string(sum%2);
+            i--;
+            j--;
+        }
+        //when only string a is left
+        while(i>=0){
+            int sum = carry + a[i]-'0';
+            carry = sum/2;
+            ans += to_string(sum%2);
+            i--;
+        }
+        //when only string b is left
+        while(j>=0){
+            int sum = carry + b[j]-'0';
+            carry = sum/2;
+            ans += to_string(sum%2);
+            j--;
+        }
+        // append the left over carry if present
+        if(carry>0){
+            ans += to_string(carry);
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+};
