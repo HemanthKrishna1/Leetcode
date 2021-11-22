@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int numIdenticalPairs(vector<int>& nums) {
+        int ans=0;
+        int n = nums.size();
+        // fist we are going to compare every ith element whith (i+1)th i.e jth element and then if both are same we just increment our ans;
+        for(int i=0;i<n;i++){
+            int j = i+1;
+            while(j<n){
+                if(nums[i]==nums[j]){
+                    ans ++;
+                }
+                j++;
+            }
+        }
+        return ans;
+    }
+};
