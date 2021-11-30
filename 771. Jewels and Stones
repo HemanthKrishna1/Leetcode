@@ -1,0 +1,37 @@
+class Solution {
+    public int numJewelsInStones(String jewels, String stones) {
+        int cnt=0;
+        int[] count1 = new int[52];
+        int[] count2 = new int[52];
+        for (int i = 0; i < jewels.length(); i++) {
+            if(jewels.charAt(i)>='a' && jewels.charAt(i)<='z'){
+                int val = jewels.charAt(i)-'a';
+                count1[val]++;
+            }else {
+                int val = jewels.charAt(i) - 'A'+26;
+                count1[val]++;
+            }
+        }
+        for (int i = 0; i < stones.length(); i++) {
+            if(stones.charAt(i)>='a' && stones.charAt(i)<='z'){
+                int val = stones.charAt(i)-'a';
+                count2[val]++;
+            }else if (stones.charAt(i)>='A' && stones.charAt(i)<='Z'){
+                int val = stones.charAt(i) - 'A'+26;
+                count2[val]++;
+            }
+        }
+        int m=0;
+        int n=0;
+        while(m<count1.length && n<count2.length){
+            if(count1[m]!=0){
+                if(count2[n]!=0){
+                    cnt = cnt + count2[n];
+                }
+            }
+            m++;
+            n++;
+        }
+        return cnt;
+    }
+}
