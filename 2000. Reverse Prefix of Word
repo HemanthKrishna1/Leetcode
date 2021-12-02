@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string reversePrefix(string word, char ch) {
+        int n = word.size();
+        int found_at = 0;
+        for(int i=0;i<n;i++){
+            if(word[i]==ch){
+                found_at = i;
+                break;
+            }
+        }
+        int j =0;
+        while(j<found_at){
+            char temp = word[j];
+            word[j] = word[found_at];
+            word[found_at] = temp;
+            j++;
+            found_at--;
+        }
+        return word;
+    }
+};
