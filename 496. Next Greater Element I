@@ -1,0 +1,31 @@
+class Solution {
+private:
+    int find(vector<int>& nums2, int x){
+        int n = nums2.size();
+        int pos = 0;
+        for(int i=0;i<n;i++){
+            if(nums2[i] == x){
+                pos = i;
+                break;
+            }
+        }
+        int j= pos+1;
+        while(j<n){
+            if(nums2[j]>x){
+                return nums2[j];
+            }
+            j++;
+        }
+        return -1;
+    }
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> ans;
+        int n = nums1.size();
+        for(int i=0;i<n;i++){
+            int x = find(nums2, nums1[i]);
+            ans.push_back(x);
+        }
+        return ans;
+    }
+};
