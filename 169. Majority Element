@@ -1,0 +1,24 @@
+class Solution {
+private:
+    int findEntryWithLargestValue(map<int, int> sampleMap) {
+	    pair<int, int> entryWithMaxValue = make_pair(0, 0);
+	    map<int, int>::iterator currentEntry;
+	    for (currentEntry = sampleMap.begin(); currentEntry != sampleMap.end(); ++currentEntry) {
+		    if (currentEntry->second > entryWithMaxValue.second) {
+			    entryWithMaxValue = make_pair(currentEntry->first, currentEntry->second);
+		    }
+	    }
+	    return entryWithMaxValue.first;
+    }
+public:
+    int majorityElement(vector<int>& nums) {
+        map<int, int> mpp;
+	    int n = nums.size();
+	    for (int i = 0; i < n; i++) {
+		    mpp[nums[i]]++;
+	    }
+	    int max_val = findEntryWithLargestValue(mpp);
+	    return max_val;
+    }
+    
+};
