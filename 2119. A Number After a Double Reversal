@@ -1,0 +1,14 @@
+class Solution {
+public:
+    // reverse a number one and store that and reverse again and check if its equal to the original num
+    int rev(int num){
+        string s = to_string(num);
+        reverse(s.begin(),s.end());
+        return stoi(s);
+    }
+    bool isSameAfterReversals(int num) {
+        int rev1 = rev(num);
+        int rev2 = rev(rev1);
+        return num==rev2;
+    }
+};
