@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool checkString(string s) {
+        int n = s.length();
+        bool check = false;
+        // have a intial bool check if a number if we encounter b then make it as true
+        // while iterating after finding one b, if we find a and the bool check is false we return a false
+        for(int i=0;i<n;i++){
+            if(s[i] == 'b') {
+                check = true;
+            }
+            if(s[i] == 'a' && check){
+                return false;
+            }
+        }
+        return true;
+    }
+};
