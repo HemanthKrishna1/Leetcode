@@ -1,0 +1,65 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    void myfunc(TreeNode* root, unordered_map<TreeNode*, TreeNode*>& parent_tracker ,TreeNode* target){
+        queue<TreeNode* >qu;
+        qu.push(root);
+        while(!qu.empty()){
+            TreeNode* current = qu.front();
+            qu.pop();
+            if(current->left) {
+                parent_tracker[current->left] = current;
+                qu.push(current->left);
+            }
+            if(current->right){
+                parent_tracker[current->right] = current;
+                qu.push(current->right);
+            }
+        }
+    }
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+        vector<int> res;
+        unordered_map<TreeNode*, TreeNode*> parent_tracker;
+        myfunc(root, parent_tracker, target);
+        unordered_map<TreeNode*, bool> visited;
+        queue<TreeNode* > qu;
+        qu.push(target);
+        visited[target] = true;
+        int cur_lvl = 0;
+        
+        while(!qu.empty()){
+            int size = qu.size();
+            if(cur_lvl++ == k) break;
+            for(int i=0;i<size;i++){
+                TreeNode* current = qu.front();
+                qu.pop();
+                if(current->left && !visited[current->left]){
+                    qu.push(current->left);
+                    visited[current->left] = true;
+                }
+                if(current->right && !visited[current->right]){
+                    qu.push(current->right);
+                    visited[current->right] = true;
+                }
+                if(parent_tracker[current] && !visited[parent_tracker[current]]){
+                    qu.push(parent_tracker[current]);
+                    visited[parent_tracker[current]] = true;
+                }
+            }
+        }
+        while(!qu.empty()){
+            TreeNode * current = qu.front();
+            qu.pop();
+            res.push_back(current->val);
+        }
+        return res;
+    }
+};
